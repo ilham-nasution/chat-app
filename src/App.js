@@ -12,6 +12,7 @@ import "firebase/analytics";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
