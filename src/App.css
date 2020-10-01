@@ -9,15 +9,16 @@
   background-color: #293241;
   border-radius: 4px;
   box-shadow: 0px 0px 24px 4px rgba(204, 204, 204, 1);
-  max-width: 500px;
-  min-width: 320px;
-  height: 600px;
+  max-width: calc(8px * 45);
+  min-width: calc(8px * 20);
+  min-height: calc(8px * 40);
 }
 
 .content h3 {
   color: whitesmoke;
   text-align: center;
   margin-top: 80px;
+  padding: 16px;
 }
 
 header {
@@ -46,8 +47,8 @@ section {
 }
 
 main {
-  padding: 0 16px;
-  height: 85%;
+  padding: 0 32px;
+  height: calc(8px * 40);
   overflow-y: auto;
   scroll-behavior: smooth;
 }
@@ -96,7 +97,7 @@ main::-webkit-scrollbar {
 
 .form-send {
   display: flex;
-  padding: 16px;
+  padding: 16px 32px;
 }
 
 .form-send input {
@@ -123,4 +124,26 @@ main::-webkit-scrollbar {
   color: #e0fbfc80;
   border-radius: 0 4px 4px 0;
   font-weight: 700;
+}
+
+@media only screen and (max-width: 320px) {
+  .content {
+    width: calc(8px * 33);
+  }
+
+  .form-send input {
+    padding: 8px;
+  }
+
+  .button-send {
+    padding: 8px;
+  }
+
+  .button-send-disabled {
+    padding: 8px;
+  }
+
+  .button-auth {
+    padding: 8px;
+  }
 }
