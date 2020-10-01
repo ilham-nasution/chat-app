@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ChatMessage from "./ChatMessage";
 import firebase from "firebase/app";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 export default function ChatRoom({ firestore, auth }) {
+  const space = useRef();
   const messagesRef = firestore.collection("messages");
-  const query = messagesRef.orderBy("createdAt").limit(10);
+  const query = messagesRef.orderBy("createdAt");
   const [messages] = useCollectionData(query, { idField: "id" });
   const [formValue, setFormValue] = useState("");
 
@@ -20,6 +21,7 @@ export default function ChatRoom({ firestore, auth }) {
       photoURL,
     });
     setFormValue("");
+    space.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -29,6 +31,7 @@ export default function ChatRoom({ firestore, auth }) {
           messages.map((message) => (
             <ChatMessage key={message.id} message={message} auth={auth} />
           ))}
+        <span ref={space}></span>
       </main>
 
       <form className="form-send" onSubmit={sendMessage}>

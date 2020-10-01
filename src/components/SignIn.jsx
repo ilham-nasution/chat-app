@@ -9,7 +9,7 @@ export default function SignIn({ auth }) {
 
   return (
     <button className="button-auth" onClick={signInWithGoogle}>
-      Sign in with Google
+      Sign In
     </button>
   );
 }

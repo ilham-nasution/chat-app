@@ -9,7 +9,8 @@ export default function ChatMessage({ message, auth }) {
       <div className={`message ${messageClass}`}>
         <img
           src={
-            photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"
+            photoURL ||
+            "https://icon-library.com/images/profile-png-icon/profile-png-icon-2.jpg"
           }
           alt="profile"
         />
