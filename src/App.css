@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: whitesmoke;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.content {
+  background-color: #293241;
+  border-radius: 4px;
+  box-shadow: 0px 0px 24px 4px rgba(204, 204, 204, 1);
+  width: 50%;
+  height: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #e0fbfc;
+  padding: 0px 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.signout-button {
+  border: none;
+  border-radius: 4px;
+  width: 80px;
+  height: 40px;
+  background-color: #ee6c4d;
+  color: whitesmoke;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.message {
+  display: flex;
+  margin: 16px 0px;
+  color: #e0fbfc;
+}
+
+.sent {
+  justify-content: flex-end;
+}
+
+.sent img {
+  order: 2;
+  margin-left: 8px;
+}
+
+.message img {
+  width: 48px;
+  height: 48px;
+  border: 1px solid black;
+  border-radius: 50%;
+  object-fit: cover;
 }

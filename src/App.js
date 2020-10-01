@@ -19,18 +19,20 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
-      <header>
-        <h1>Chat App</h1>
-        <SignOut auth={auth} />
-      </header>
-      <section>
-        {user ? (
-          <ChatRoom firestore={firestore} auth={auth} />
-        ) : (
-          <SignIn auth={auth} />
-        )}
-      </section>
+    <div className="container">
+      <div className="content">
+        <header>
+          <h1>Chat App</h1>
+          <SignOut auth={auth} />
+        </header>
+        <section>
+          {user ? (
+            <ChatRoom firestore={firestore} auth={auth} />
+          ) : (
+            <SignIn auth={auth} />
+          )}
+        </section>
+      </div>
     </div>
   );
 }
