@@ -7,5 +7,9 @@ export default function SignIn({ auth }) {
     auth.signInWithPopup(provider);
   };
 
-  return <button onClick={signInWithGoogle}>Sign in with Google</button>;
+  return (
+    <button className="button-auth" onClick={signInWithGoogle}>
+      Sign in with Google
+    </button>
+  );
 }

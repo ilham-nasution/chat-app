@@ -23,15 +23,13 @@ function App() {
       <div className="content">
         <header>
           <h1>Chat App</h1>
-          <SignOut auth={auth} />
+          {user ? <SignOut auth={auth} /> : <SignIn auth={auth} />}
         </header>
-        <section>
-          {user ? (
+        {user && (
+          <section>
             <ChatRoom firestore={firestore} auth={auth} />
-          ) : (
-            <SignIn auth={auth} />
-          )}
-        </section>
+          </section>
+        )}
       </div>
     </div>
   );

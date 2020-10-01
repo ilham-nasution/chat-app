@@ -31,14 +31,18 @@ export default function ChatRoom({ firestore, auth }) {
           ))}
       </main>
 
-      <form onSubmit={sendMessage}>
+      <form className="form-send" onSubmit={sendMessage}>
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
-          placeholder="say something nice"
+          placeholder="Type a message"
         />
 
-        <button type="submit" disabled={!formValue}>
+        <button
+          className={formValue ? "button-send" : "button-send-disabled"}
+          type="submit"
+          disabled={!formValue}
+        >
           Send
         </button>
       </form>

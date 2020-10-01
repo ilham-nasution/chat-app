@@ -16,26 +16,28 @@
   justify-content: space-between;
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-}
-
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #e0fbfc;
+  font-weight: 700;
   padding: 0px 16px;
+  box-shadow: 1px 0px 8px 0px rgba(204, 204, 204, 1);
 }
 
-.signout-button {
+.button-auth {
   border: none;
   border-radius: 4px;
-  width: 80px;
-  height: 40px;
-  background-color: #ee6c4d;
-  color: whitesmoke;
+  padding: 16px;
+  background-color: #98c1d9;
+  color: #293241;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+main {
+  padding: 0 16px;
 }
 
 .message {
@@ -54,9 +56,40 @@ header {
 }
 
 .message img {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border: 1px solid black;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.form-send {
+  display: flex;
+  padding: 16px;
+}
+
+.form-send input {
+  flex-grow: 1;
+  padding: 16px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+}
+
+.button-send {
+  border: none;
+  padding: 16px 40px;
+  background-color: #ee6c4d;
+  color: #e0fbfc;
+  border-radius: 0 4px 4px 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button-send-disabled {
+  border: none;
+  padding: 16px 40px;
+  background-color: #ee6d4db0;
+  color: #e0fbfc80;
+  border-radius: 0 4px 4px 0;
+  font-weight: 700;
 }
