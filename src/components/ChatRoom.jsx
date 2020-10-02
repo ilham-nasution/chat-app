@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 import ChatMessage from "./ChatMessage";
-import firebase from "firebase/app";
+import { firestore, timestamp } from "../firebase";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
-export default function ChatRoom({ firestore, auth }) {
+export default function ChatRoom({ user }) {
   const space = useRef();
   const messagesRef = firestore.collection("messages");
   const query = messagesRef.orderBy("createdAt");
@@ -13,10 +13,10 @@ export default function ChatRoom({ firestore, auth }) {
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    const { uid, photoURL } = auth.currentUser;
+    const { uid, photoURL } = user;
     await messagesRef.add({
       text: formValue,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      createdAt: timestamp,
       uid,
       photoURL,
     });
@@ -29,7 +29,7 @@ export default function ChatRoom({ firestore, auth }) {
       <main>
         {messages &&
           messages.map((message) => (
-            <ChatMessage key={message.id} message={message} auth={auth} />
+            <ChatMessage key={message.id} message={message} user={user} />
           ))}
         <span ref={space}></span>
       </main>

@@ -1,20 +1,9 @@
 import React from "react";
 import "./App.css";
-import SignIn from "./components/SignIn";
 import ChatRoom from "./components/ChatRoom";
-import SignOut from "./components/SignOut";
-
-import firebase from "firebase/app";
-import firebaseConfig from "./config";
-import "firebase/firestore";
-import "firebase/auth";
-import "firebase/analytics";
+import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-const auth = firebase.auth();
-const firestore = firebase.firestore();
+import Header from "./components/Header";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -22,14 +11,10 @@ function App() {
   return (
     <div className="container">
       <div className="content">
-        <header>
-          <h2>Chat App</h2>
-          {user ? <SignOut auth={auth} /> : <SignIn auth={auth} />}
-        </header>
-
+        <Header user={user} />
         {user ? (
           <section>
-            <ChatRoom firestore={firestore} auth={auth} />
+            <ChatRoom user={user} />
           </section>
         ) : (
           <h3>Welcome, please sign in first.</h3>

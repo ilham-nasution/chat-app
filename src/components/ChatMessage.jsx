@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function ChatMessage({ message, auth }) {
+export default function ChatMessage({ message, user }) {
   const { text, uid, photoURL } = message;
-  const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
+  const messageClass = uid === user.uid ? "sent" : "received";
 
   return (
     <>
