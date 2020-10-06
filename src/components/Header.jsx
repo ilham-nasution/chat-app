@@ -1,12 +1,26 @@
-import React from "react";
-import SignIn from "./SignIn";
+import React, { useContext } from "react";
 import SignOut from "./SignOut";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Header = ({ user }) => {
+  const [darkTheme, setDarkTheme] = useContext(ThemeContext);
+
   return (
-    <header>
+    <header className={darkTheme ? "header-dark" : ""}>
       <h2>Chat App</h2>
-      {user ? <SignOut user={user} /> : <SignIn />}
+      <div className="row">
+        <label className="switch">
+          <input type="checkbox" />
+          <span
+            onClick={() => {
+              setDarkTheme(!darkTheme);
+            }}
+            className="slider round"
+          ></span>
+        </label>
+        <span className="fas fa-adjust"></span>
+        {user && <SignOut />}
+      </div>
     </header>
   );
 };

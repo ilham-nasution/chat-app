@@ -1,12 +1,10 @@
 import React from "react";
 import { signOut } from "../firebase";
 
-export default function SignOut({ user }) {
+export default function SignOut() {
   return (
-    user && (
-      <button className="button-auth" onClick={signOut}>
-        Sign Out
-      </button>
-    )
+    <button className="button-auth sign-out" onClick={signOut}>
+      <span className="fas fa-sign-out-alt"></span>
+    </button>
   );
 }

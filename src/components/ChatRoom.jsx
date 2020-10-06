@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import ChatMessage from "./ChatMessage";
 import { firestore, timestamp } from "../firebase";
-
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function ChatRoom({ user }) {
+  const [darkTheme] = useContext(ThemeContext);
   const space = useRef();
   const messagesRef = firestore.collection("messages");
   const query = messagesRef.orderBy("createdAt");
@@ -26,7 +27,7 @@ export default function ChatRoom({ user }) {
 
   return (
     <>
-      <main>
+      <main className={darkTheme ? "main-dark" : ""}>
         {messages &&
           messages.map((message) => (
             <ChatMessage key={message.id} message={message} user={user} />
@@ -42,7 +43,15 @@ export default function ChatRoom({ user }) {
         />
 
         <button
-          className={formValue ? "button-send" : "button-send-disabled"}
+          className={
+            formValue
+              ? darkTheme
+                ? "button-send button-send-dark"
+                : "button-send"
+              : darkTheme
+              ? "button-send-disabled button-send-disabled-dark"
+              : "button-send-disabled"
+          }
           type="submit"
           disabled={!formValue}
         >
